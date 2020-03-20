@@ -50,5 +50,6 @@ To Compile:
 
 # Tested Browsers:
 
-  Safari [WORKING]
-  Firefox [WORKING]
+  - Safari [WORKING]
+  - Firefox [WORKING]
+  - Chrome [WORKING]
