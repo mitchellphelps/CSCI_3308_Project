@@ -20,7 +20,7 @@ To Compile:
   MAC/Linux Terminal:
   
     1) Download repository.
-    3) Go to Terminal and navigate to the location of the downloaded folder using the cd command. If the folder is on your        Desktop, use the command: 
+    3) Go to Terminal and navigate to the location of the downloaded folder using the cd command. If the folder is on your Desktop, use the command: 
         cd Desktop/CSCI_3308_Project-master
     2) Type the following command into Terminal: 
         python -m SimpleHTTPServer 8000
