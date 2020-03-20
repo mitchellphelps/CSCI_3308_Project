@@ -6,12 +6,12 @@ Team Name: Team Runner
 
 Group Members:
 
-  Tristan Hanna
-  Jianbai Lei
-  Manny Navarrete
-  Mitchell Phelps
-  Alexa Rinard
-  Beau Walters
+  - Tristan Hanna
+  - Jianbai Lei
+  - Manny Navarrete
+  - Mitchell Phelps
+  - Alexa Rinard
+  - Beau Walters
   
 # Runner
 
