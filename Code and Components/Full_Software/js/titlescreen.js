@@ -7,8 +7,8 @@ function openLogModal(){
 }*/
 
 var database = firebase.firestore();
-var docRef = database.collection("Adds");
-
+var docRef = database.collection("users");
+/*
 function show(){
     var nameShow = document.getElementById("nameShow");
     var placeShow = document.getElementById("placeShow");
@@ -18,17 +18,24 @@ function show(){
         placeShow.innerHTML = "";
 
         querySnapshot.forEach(function(doc){
+<<<<<<< HEAD
             var name = doc.data().name;
             var location = doc.data().location;
 
+=======
+            var username = doc.data().username;
+            var highscore = doc.data().highscore;
+            
+>>>>>>> b08446164949a65a7e9f7f6eaa574e8a23293fe6
             userNameShow.innerHTML += '<p>' + name + '</p>';
             highScoreShow.innerHTML += '<p>' + location + '</p>';
         });
     });
-}
+}*/
 
-function sign(){
+function signUp(){
     //getting information given
+<<<<<<< HEAD
 	var newUser = document.getElementById("user").value;
 	var newEmail = document.getElementById("email").value;
 
@@ -51,16 +58,16 @@ function sign(){
 			newCaught = "no";
 		}
 
+=======
+	var newUser = document.getElementById("username").value;
+	var newPassword = document.getElementById("psw").value;
+	
+>>>>>>> b08446164949a65a7e9f7f6eaa574e8a23293fe6
 	//adding new document to collection with input values
-	database.collection("Adds").add({
-		name: newUser,
-        email: newEmail,
-        phone: newPhone,
-        location: newPlace,
-        description: newDescribe,
-        avalanche: newAvalanche,
-        trigger: newTrigger,
-        victims: newCaught
+	database.collection("users").add({
+		username: newUser,
+        password: newPassword,
+        highscore: 0
 	})
 	.then(function(docRef) {
 		console.log("Document written with ID: ", docRef.id);
@@ -70,12 +77,16 @@ function sign(){
 	});
 }
 
+<<<<<<< HEAD
 var submit=document.getElementById("the-button");
 submit.addEventListener("click", sign);
 
 show();
 
 function openSignModal() {
+=======
+function openSignModal() {       
+>>>>>>> b08446164949a65a7e9f7f6eaa574e8a23293fe6
     //var user = document.getElementById("username"); not needed yet
     var myInput = document.getElementById("psw");
     var confirmMyInput = document.getElementById("cpsw");
@@ -169,9 +180,7 @@ function enableButton(letter, capital, number, length, match) {
 
 
 function onClickFunction() {
-    //TODO: check if username is available and store new user with password, default settings,etc
-    var username = document.getElementById("username");
-    alert("Welcome to Runner, " + username + "!!!");
+    signUp();
 }
 
 function onLogInFunction() {
