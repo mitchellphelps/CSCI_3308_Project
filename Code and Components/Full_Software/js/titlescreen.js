@@ -23,6 +23,11 @@ function show(){
             var location = doc.data().location;
             var username = doc.data().username;
             var highscore = doc.data().highscore;
+<<<<<<< HEAD
+=======
+
+>>>>>>> b08446164949a65a7e9f7f6eaa574e8a23293fe6
+>>>>>>> c9426cd3fbb41f1b943493e8104ba154cf923b3f
             userNameShow.innerHTML += '<p>' + name + '</p>';
             highScoreShow.innerHTML += '<p>' + location + '</p>';
         });
@@ -31,9 +36,10 @@ function show(){
 
 function signUp(){
     //getting information given
+
 	var newUser = document.getElementById("username").value;
 	var newPassword = document.getElementById("psw").value;
-    
+
 	//adding new document to collection with input values
 	database.collection("users").add({
 		username: newUser,
@@ -48,8 +54,8 @@ function signUp(){
 	});
 }
 
+function openSignModal() {
 
-function openSignModal() { 
     //var user = document.getElementById("username"); not needed yet
     var myInput = document.getElementById("psw");
     var confirmMyInput = document.getElementById("cpsw");
