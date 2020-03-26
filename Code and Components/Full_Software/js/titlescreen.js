@@ -8,6 +8,7 @@ function openLogModal(){
 
 var database = firebase.firestore();
 var docRef = database.collection("users");
+
 /*
 function show(){
     var nameShow = document.getElementById("nameShow");
@@ -128,7 +129,6 @@ function enableButton(letter, capital, number, length, match) {
     var condition = (false);
     if(letter.classList.contains("valid") && capital.classList.contains("valid") && number.classList.contains("valid") && length.classList.contains("valid") && match.classList.contains("valid")){
         condition = true;
-        console.log("enabled");
     }
     if(condition) {       
             button.disabled = false;
@@ -136,7 +136,7 @@ function enableButton(letter, capital, number, length, match) {
     if(button.disabled == true){
         console.log("still disabled");
     }
-    }
+}
 
 
 function onClickFunction() {
