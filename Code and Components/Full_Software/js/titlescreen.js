@@ -6,6 +6,75 @@ function openLogModal(){
     
 }*/
 
+var database = firebase.firestore();
+var docRef = database.collection("Adds");
+
+function show(){
+    var nameShow = document.getElementById("nameShow");
+    var placeShow = document.getElementById("placeShow");
+    
+    database.collection("users").onSnapshot(function(querySnapshot){
+        nameShow.innerHTML = "";
+        placeShow.innerHTML = "";
+        
+        querySnapshot.forEach(function(doc){
+            var name = doc.data().name;
+            var location = doc.data().location;
+            
+            userNameShow.innerHTML += '<p>' + name + '</p>';
+            highScoreShow.innerHTML += '<p>' + location + '</p>';
+        });
+    });
+}
+
+function sign(){
+    //getting information given
+	var newUser = document.getElementById("user").value;
+	var newEmail = document.getElementById("email").value;
+
+    if(document.getElementById("avayes").checked==true){
+		newAvalanche = "yes";
+	}
+	else if(document.getElementById("avano").checked==true){
+			newAvalanche = "no";
+		}
+    if(document.getElementById("trigyes").checked==true){
+		newTrigger = "yes";
+	}
+	else if(document.getElementById("trigno").checked==true){
+			newTrigger = "no";
+		}
+    if(document.getElementById("caughtyes").checked==true){
+		newCaught = "yes";
+	}
+	else if(document.getElementById("caughtno").checked==true){
+			newCaught = "no";
+		}
+	
+	//adding new document to collection with input values
+	database.collection("Adds").add({
+		name: newUser,
+        email: newEmail,
+        phone: newPhone,
+        location: newPlace,
+        description: newDescribe,
+        avalanche: newAvalanche,
+        trigger: newTrigger,
+        victims: newCaught
+	})
+	.then(function(docRef) {
+		console.log("Document written with ID: ", docRef.id);
+	})
+	.catch(function(error) {
+		console.error("Error adding document: ", error);
+	});
+}
+
+var submit=document.getElementById("the-button");
+submit.addEventListener("click", sign);
+
+show();
+
 function openSignModal() {       
     //var user = document.getElementById("username"); not needed yet
     var myInput = document.getElementById("psw");

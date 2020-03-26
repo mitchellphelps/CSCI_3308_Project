@@ -49,7 +49,7 @@
     <div class='text-center'>
         <a href="#" type="button" class="btn btn-custom2 btn-lg">Scoreboard</a>
     </div>
-      
+    <!-- sign up pop up-->
     <div id="signUpModal" class="modal fade">
 		<div class="modal-dialog modal-login">
 			<div class="modal-content">
@@ -89,6 +89,7 @@
 			</div>
 		</div>
 	</div>
+    <!-- log in pop up -->
     <div id="logInModal" class="modal fade">
 		<div class="modal-dialog modal-login">
 			<div class="modal-content">
@@ -118,6 +119,30 @@
   	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
   	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 	<script src="js/titlescreen.js"></script>
+      
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+         https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-analytics.js"></script>
+
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyBUH4LG570G9w8IvXunNexNp1LmQQF3c3k",
+        authDomain: "runner-942d2.firebaseapp.com",
+        databaseURL: "https://runner-942d2.firebaseio.com",
+        projectId: "runner-942d2",
+        storageBucket: "runner-942d2.appspot.com",
+        messagingSenderId: "968559944548",
+        appId: "1:968559944548:web:508abea77a5619948a9071",
+        measurementId: "G-GNFZ9Y00BW"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+    </script>
   </body>
 
 </html>
