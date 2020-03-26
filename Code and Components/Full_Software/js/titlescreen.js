@@ -25,7 +25,7 @@ function show(){
 =======
             var username = doc.data().username;
             var highscore = doc.data().highscore;
-            
+
 >>>>>>> b08446164949a65a7e9f7f6eaa574e8a23293fe6
             userNameShow.innerHTML += '<p>' + name + '</p>';
             highScoreShow.innerHTML += '<p>' + location + '</p>';
@@ -35,7 +35,6 @@ function show(){
 
 function signUp(){
     //getting information given
-<<<<<<< HEAD
 	var newUser = document.getElementById("user").value;
 	var newEmail = document.getElementById("email").value;
 
@@ -58,11 +57,9 @@ function signUp(){
 			newCaught = "no";
 		}
 
-=======
 	var newUser = document.getElementById("username").value;
 	var newPassword = document.getElementById("psw").value;
-	
->>>>>>> b08446164949a65a7e9f7f6eaa574e8a23293fe6
+
 	//adding new document to collection with input values
 	database.collection("users").add({
 		username: newUser,
@@ -77,16 +74,16 @@ function signUp(){
 	});
 }
 
-<<<<<<< HEAD
+
 var submit=document.getElementById("the-button");
 submit.addEventListener("click", sign);
 
 show();
 
 function openSignModal() {
-=======
-function openSignModal() {       
->>>>>>> b08446164949a65a7e9f7f6eaa574e8a23293fe6
+
+function openSignModal() {
+
     //var user = document.getElementById("username"); not needed yet
     var myInput = document.getElementById("psw");
     var confirmMyInput = document.getElementById("cpsw");
