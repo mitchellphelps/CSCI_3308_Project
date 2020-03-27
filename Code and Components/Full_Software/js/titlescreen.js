@@ -9,30 +9,45 @@ function openLogModal(){
 var database = firebase.firestore();
 var docRef = database.collection("users");
 
-/*
+
+//display usernames and highscores from highest to lowest
 function show(){
     var nameShow = document.getElementById("nameShow");
-    var placeShow = document.getElementById("placeShow");
+    var scoreShow = document.getElementById("scoreShow");
 
     database.collection("users").onSnapshot(function(querySnapshot){
         nameShow.innerHTML = "";
-        placeShow.innerHTML = "";
+        scoreShow.innerHTML = "";
 
+				var scoreArray = [];
         querySnapshot.forEach(function(doc){
-            var name = doc.data().name;
-            var location = doc.data().location;
-            var username = doc.data().username;
+            var name = doc.data().username;
             var highscore = doc.data().highscore;
-<<<<<<< HEAD
-=======
 
->>>>>>> b08446164949a65a7e9f7f6eaa574e8a23293fe6
->>>>>>> c9426cd3fbb41f1b943493e8104ba154cf923b3f
-            userNameShow.innerHTML += '<p>' + name + '</p>';
-            highScoreShow.innerHTML += '<p>' + location + '</p>';
+						console.log(name);
+						console.log(highscore);
+						scoreArray.push(doc.data());
         });
+				scoreArray.sort(compare);
+				scoreArray.reverse();
+				console.log(scoreArray);
+
+
+				scoreArray.forEach((item, i) => {
+					scoreShow.innerHTML += scoreArray[i].username + " " + scoreArray[i].highscore + "\n";
+				});
+
     });
-}*/
+}
+
+//sort highscores
+function compare(a,b) {
+  if (a.highscore < b.highscore)
+     return -1;
+  if (a.highscore > b.highscore)
+    return 1;
+  return 0;
+}
 
 function signUp(){
     //getting information given
