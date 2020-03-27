@@ -34,7 +34,7 @@ function show(){
 
 
 				scoreArray.forEach((item, i) => {
-					scoreShow.innerHTML += scoreArray[i].username + " " + scoreArray[i].highscore + "\n";
+					scoreShow.innerHTML += scoreArray[i].username + " " + scoreArray[i].highscore + "<br>";
 				});
 
     });
