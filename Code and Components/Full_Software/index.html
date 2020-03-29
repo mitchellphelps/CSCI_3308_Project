@@ -21,6 +21,26 @@
 
   <body>
 
+    <!-- Scoreboard pop up -->
+      <div id="scoreboardModal" class="modal fade">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              <h4 class="modal-title">Scoreboard</h4>
+            </div>
+            <div class="modal-body">
+              <div class='text-left'>
+                <p id="nameShow"></p>
+              </div>
+              <div class='text-left'>
+                <p id="scoreShow"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
     <!-- Navbar for Signup and Login Pages -->
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
@@ -45,12 +65,16 @@
     </div>
 
     <!-- Button to See Scoreboards -->
-    <div class='text-center'>
+    <!-- <div class='text-center'>
         <a href="#" type="button" onClick="show()" class="btn btn-custom2 btn-lg">Scoreboard</a>
+    </div> -->
+
+    <div class='text-center'>
+        <a type="button" id="scoreboardButton" class="btn btn-custom2 btn-lg" data-toggle=modal data-target="#scoreboardModal">Scoreboard</a>
     </div>
 
-    <div class='text-center' id="nameShow"></div>
-    <div class='text-center' id="scoreShow"></div>
+    <!-- <div class='text-center' id="nameShow"></div>
+    <div class='text-center' id="scoreShow"></div> -->
     <!-- sign up pop up-->
     <div id="signUpModal" class="modal fade">
 		<div class="modal-dialog modal-login">

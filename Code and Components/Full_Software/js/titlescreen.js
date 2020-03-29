@@ -11,7 +11,37 @@ var docRef = database.collection("users");
 
 
 //display usernames and highscores from highest to lowest
-function show(){
+// function show(){
+//     var nameShow = document.getElementById("nameShow");
+//     var scoreShow = document.getElementById("scoreShow");
+//
+//     database.collection("users").onSnapshot(function(querySnapshot){
+//         nameShow.innerHTML = "";
+//         scoreShow.innerHTML = "";
+//
+// 				var scoreArray = [];
+//         querySnapshot.forEach(function(doc){
+//             var name = doc.data().username;
+//             var highscore = doc.data().highscore;
+//
+// 						console.log(name);
+// 						console.log(highscore);
+// 						scoreArray.push(doc.data());
+//         });
+// 				scoreArray.sort(compare);
+// 				scoreArray.reverse();
+// 				console.log(scoreArray);
+//
+//
+// 				scoreArray.forEach((item, i) => {
+// 					scoreShow.innerHTML += scoreArray[i].username + " " + scoreArray[i].highscore + "<br>";
+// 				});
+//
+//     });
+// }
+
+$('#scoreboardModal').on('shown.bs.modal', function (e){
+    console.log("Im here");
     var nameShow = document.getElementById("nameShow");
     var scoreShow = document.getElementById("scoreShow");
 
@@ -38,7 +68,7 @@ function show(){
 				});
 
     });
-}
+})
 
 //sort highscores
 function compare(a,b) {
