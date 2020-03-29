@@ -59,22 +59,21 @@
         <h1 class="display-4">Runner</h1>
     </div>
 
+    <!--How to Play Button -->
+    <div class='text-center'>
+        <a type="button" class="btn btn-custom3 btn-lg" data-toggle=modal data-target="#howToModal">How to Play</a>
+    </div>
+
     <!-- Button to Start Playing the Game -->
 	<div class='text-center'>
         <a href="Runner/RunnerFiles/index.html" type="button" class="btn btn-custom1 btn-lg">Play Runner</a>
     </div>
 
     <!-- Button to See Scoreboards -->
-    <!-- <div class='text-center'>
-        <a href="#" type="button" onClick="show()" class="btn btn-custom2 btn-lg">Scoreboard</a>
-    </div> -->
-
     <div class='text-center'>
         <a type="button" id="scoreboardButton" class="btn btn-custom2 btn-lg" data-toggle=modal data-target="#scoreboardModal">Scoreboard</a>
     </div>
 
-    <!-- <div class='text-center' id="nameShow"></div>
-    <div class='text-center' id="scoreShow"></div> -->
     <!-- sign up pop up-->
     <div id="signUpModal" class="modal fade">
 		<div class="modal-dialog modal-login">
@@ -115,6 +114,24 @@
 			</div>
 		</div>
 	</div>
+
+  <!-- How to Play pop up -->
+    <div id="howToModal" class="modal fade">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title">How To Play</h4>
+          </div>
+          <div class="modal-body">
+            <img src="https://cdn.discordapp.com/attachments/672848888880824321/693949035362386033/Screen_Shot_2020-03-29_at_4.25.25_PM.png" style="width:300px;height:200px;" class="center">
+            <p>You are a dinosaur who loves to run! Run as far as you can while avoiding obstacles. If you hit one, its Game Over.
+            Using the up arrow key, you can either click it once to jump over small obstacles, or click it twice to double jump over larger ones. The farther you can make it, the higher the score! You can even see the top ten highest scores by pressing the scoreboard button on the home page. Happy Jumping!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- log in pop up -->
     <div id="logInModal" class="modal fade">
 		<div class="modal-dialog modal-login">

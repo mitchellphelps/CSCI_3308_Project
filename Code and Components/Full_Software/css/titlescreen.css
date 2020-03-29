@@ -26,8 +26,21 @@
     margin: 15px;
 
 }
+
+.btn-custom3 {
+
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-right: 75px;
+    padding-left: 75px;
+    background-color: cornflowerblue;
+    margin: 15px;
+    color: black;
+
+}
+
 /*added for sign up modal*/
-.modal-login {		
+.modal-login {
     color: #636363;
     width: 350px;
 }
@@ -37,7 +50,7 @@
     border: none;
 }
 .modal-login .modal-header {
-    border-bottom: none;   
+    border-bottom: none;
     position: relative;
     justify-content: center;
 }
@@ -51,13 +64,13 @@
 }
 .modal-login .form-control, .modal-login .btn {
     min-height: 40px;
-    border-radius: 3px; 
+    border-radius: 3px;
 }
 .modal-login .close {
     position: absolute;
     top: -5px;
     right: -5px;
-}	
+}
 .modal-login .modal-footer {
     background: #ecf0f1;
     border-color: #dee4e7;
@@ -69,7 +82,7 @@
 }
 .modal-login .modal-footer a {
     color: #999;
-}		
+}
 .modal-login .avatar {
     position: absolute;
     margin: 0 auto;
@@ -93,7 +106,7 @@
 
 .btn:disabled{
     color: #fff;
-    border-radius: 4px;    
+    border-radius: 4px;
     text-decoration: none;
     transition: all 0.4s;
     line-height: normal;
@@ -103,7 +116,7 @@
 
 .modal-login .btn {
     color: #fff;
-    border-radius: 4px;    
+    border-radius: 4px;
     text-decoration: none;
     transition: all 0.4s;
     line-height: normal;
@@ -171,4 +184,11 @@ input[type=submit] {
   position: relative;
   left: -35px;
   content: '\00D7';
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
 }
