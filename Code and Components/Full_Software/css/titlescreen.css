@@ -108,6 +108,7 @@
     transition: all 0.4s;
     line-height: normal;
     border: none;
+    cursor:pointer;
 }
 
 .modal-login .btn:hover, .modal-login .btn:focus {

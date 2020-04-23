@@ -28,15 +28,15 @@
           <div class="navbar-header">
             <a class="navbar-brand" href="#">Runner</a>
           </div>
-          <ul class="nav navbar-nav navbar-right">
+          <ul id="userNav" class="nav navbar-nav navbar-right">
             <li><a href="#signUpModal" data-toggle="modal" onclick="openSignModal()"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-            <li><a href="#logInModal" data-toggle="modal" onClick="openLogModal"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            <li><a href="#logInModal" data-toggle="modal"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
           </ul>
         </div>
     </nav>
-
+    
     <!-- Title of Game -->
-    <div class="jumbotron">
+    <div id="runnerTitle" class="jumbotron">
         <h1 class="display-4">Runner</h1>
     </div>
 
@@ -77,8 +77,8 @@
 				</div>
 				<div class="modal-footer">
 					<div id="message" style="display:block">
-                        <!-- We need to add a username validation along with this but that will be with API-->
-                        <h3 id="unique" class="valid">Username Must be Original</h3>
+                        <h3>Username must:</h3>
+                        <p id="unique" class="invalid">Be Original</p>
 						<h3>Password must contain the following:</h3>
 						<p id="letter" class="invalid">A <b>lowercase</b> letter</p>
 						<p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
@@ -97,6 +97,7 @@
 				<div class="modal-header">
 					<h4 class="modal-title">Log In!</h4>
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <div id="modalMessage"></div>
 				</div>
 				<div class="modal-body">
 					<div class="form-group">
@@ -108,8 +109,8 @@
 							required="required">
 					</div>
 					<div class="form-group">
-						<button id="my_submit_button" class="btn btn-primary btn-block login-btn" disabled
-							onClick="onLogInFunction()">Sign Up</button>
+						<button id="my_login_button" class="btn btn-primary btn-block login-btn"
+							onClick="login()">Log In</button>
 					</div>
 				</div>
 			</div>

@@ -1,20 +1,13 @@
-//TODO: API stuff for inserting new user and validating user's login
-//Also need log in just waiting for Node.js lab to have a better understanding of it
-//mostly password validation for sign up so far just from the lab we had
-/*
-function openLogModal(){
-
-}*/
-
 var database = firebase.firestore();
 var docRef = database.collection("users");
 
+var loggedUser;
+var loggedIn = false;
+
 function signUp(){
     //getting information given
-
 	var newUser = document.getElementById("username").value;
 	var newPassword = document.getElementById("psw").value;
-
 	//adding new document to collection with input values
 	database.collection("users").add({
 		username: newUser,
@@ -29,10 +22,27 @@ function signUp(){
 	});
 }
 
+function login(){
+    var user = document.getElementById("logUsername").value;
+    var psw = document.getElementById("logPsw").value;
+    database.collection("users").onSnapshot(function(querySnapshot){
+        querySnapshot.forEach(function(doc){
+            if(doc.data().username == user){
+                if(doc.data().password == psw){
+                    loggedUser = user;
+                    loggedIn = true;
+                    console.log(doc.data().username);
+                }
+            }
+        });
+        onLogIn();
+    });
+}
+
+
 function openSignModal() {
 
-    //var user = document.getElementById("username");
-    //var username = document.getElementById("username").value;
+    var username = document.getElementById("username");
     //var unique = document.getElementById("unique");
     var myInput = document.getElementById("psw");
     var confirmMyInput = document.getElementById("cpsw");
@@ -41,7 +51,27 @@ function openSignModal() {
 	var number = document.getElementById("number");
 	var length = document.getElementById("length");
     var match = document.getElementById("match");
-
+    
+    username.onkeyup = function(){
+        var count = 0;
+        database.collection("users").onSnapshot(function(querySnapshot){
+            querySnapshot.forEach(function(doc){
+                if(doc.data().username == username.value){
+                    count++;
+                }
+            });
+            if(count>0){
+                unique.classList.remove("valid");
+                unique.classList.add("invalid");
+            }
+            else{
+                unique.classList.remove("invalid");
+                unique.classList.add("valid");
+            }
+        });
+    }
+    
+    
 	// When the user starts to type something inside the password field
 	myInput.onkeyup = function(){
        console.log('java')
@@ -137,26 +167,19 @@ function onClickFunction() {
         alert("Welcome to Runner, "+newUser+"!!!");
     }else{
         alert("Username is already taken!");
-        var user = document.getElementById("username");
-        user.innerHTML="";
+        //var user = document.getElementById("username");
+        //user.innerHTML="";
     }
-    var reference = database.getInstance().getReference();
+}
 
-    var query = reference.child("issue").orderByChild("id").equalTo(0);
-    query.addListenerForSingleValueEvent(new ValueEventListener() {
-        @Override
-        public void onDataChange(DataSnapshot dataSnapshot) {
-            if (dataSnapshot.exists()) {
-                // dataSnapshot is the "issue" node with all children with id 0
-                for (DataSnapshot issue : dataSnapshot.getChildren()) {
-                    // do something with the individual "issues"
-                }
-            }
-        }
-
-        @Override
-        public void onCancelled(DatabaseError databaseError) {
-
-        }
-    });
+function onLogIn(){
+    console.log(loggedIn);
+    if(loggedIn == true){
+        var newMessage = document.getElementById("logInModal");
+        newMessage.innerHTML = '<div class="modal-dialog modal-login"><div class="modal-content"><div class="modal-header"><h4 class="modal-title">Welcome to Runner, '+loggedUser+'</h4><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><br></div></div></div>';
+        document.getElementById("userNav").innerHTML = "";
+        document.getElementById("runnerTitle").innerHTML += '<h2>Welcome, ' +loggedUser+ '!</h2>';
+    }else{
+        document.getElementById("modalMessage").innerHTML = "<br>Please enter an existing username and password combination.";
+    }
 }
