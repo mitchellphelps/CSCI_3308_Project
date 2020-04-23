@@ -9,31 +9,6 @@ function openLogModal(){
 var database = firebase.firestore();
 var docRef = database.collection("users");
 
-/*
-function show(){
-    var nameShow = document.getElementById("nameShow");
-    var placeShow = document.getElementById("placeShow");
-
-    database.collection("users").onSnapshot(function(querySnapshot){
-        nameShow.innerHTML = "";
-        placeShow.innerHTML = "";
-
-        querySnapshot.forEach(function(doc){
-            var name = doc.data().name;
-            var location = doc.data().location;
-            var username = doc.data().username;
-            var highscore = doc.data().highscore;
-<<<<<<< HEAD
-=======
-
->>>>>>> b08446164949a65a7e9f7f6eaa574e8a23293fe6
->>>>>>> c9426cd3fbb41f1b943493e8104ba154cf923b3f
-            userNameShow.innerHTML += '<p>' + name + '</p>';
-            highScoreShow.innerHTML += '<p>' + location + '</p>';
-        });
-    });
-}*/
-
 function signUp(){
     //getting information given
 
@@ -56,7 +31,9 @@ function signUp(){
 
 function openSignModal() {
 
-    //var user = document.getElementById("username"); not needed yet
+    //var user = document.getElementById("username");
+    //var username = document.getElementById("username").value;
+    //var unique = document.getElementById("unique");
     var myInput = document.getElementById("psw");
     var confirmMyInput = document.getElementById("cpsw");
 	var letter = document.getElementById("letter");
@@ -66,7 +43,7 @@ function openSignModal() {
     var match = document.getElementById("match");
 
 	// When the user starts to type something inside the password field
-	myInput.onkeyup = function() {
+	myInput.onkeyup = function(){
        console.log('java')
 
         var lowerCaseLetters = new RegExp("[a-z]");
@@ -109,6 +86,7 @@ function openSignModal() {
             length.classList.remove("valid");
             length.classList.add("invalid");
         }
+        
     }
 
     confirmMyInput.onkeyup = function() {
@@ -130,7 +108,6 @@ function openSignModal() {
     }
 }
 
-
 function enableButton(letter, capital, number, length, match) {
 
     var button = document.getElementById('my_submit_button');
@@ -146,7 +123,40 @@ function enableButton(letter, capital, number, length, match) {
     }
 }
 
-
 function onClickFunction() {
-    signUp();
+    console.log("1");
+    var newUser = document.getElementById("username").value;
+    
+    var query = docRef.where("username", "==", newUser);
+    query.orderBy("password");
+    console.log(query);
+    
+    if(query == null){
+        signUp();
+        console.log(newUser);
+        alert("Welcome to Runner, "+newUser+"!!!");
+    }else{
+        alert("Username is already taken!");
+        var user = document.getElementById("username");
+        user.innerHTML="";
+    }
+    var reference = database.getInstance().getReference();
+
+    var query = reference.child("issue").orderByChild("id").equalTo(0);
+    query.addListenerForSingleValueEvent(new ValueEventListener() {
+        @Override
+        public void onDataChange(DataSnapshot dataSnapshot) {
+            if (dataSnapshot.exists()) {
+                // dataSnapshot is the "issue" node with all children with id 0
+                for (DataSnapshot issue : dataSnapshot.getChildren()) {
+                    // do something with the individual "issues"
+                }
+            }
+        }
+
+        @Override
+        public void onCancelled(DatabaseError databaseError) {
+
+        }
+    });
 }
