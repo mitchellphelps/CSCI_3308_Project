@@ -1,5 +1,7 @@
 var database = firebase.firestore();
 var docRef = database.collection("users");
+var loggedUser;
+var loggedIn = false;
 
 $('#scoreboardModal').on('shown.bs.modal', function (e){
     console.log("Im here");
