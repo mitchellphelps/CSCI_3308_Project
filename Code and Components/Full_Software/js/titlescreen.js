@@ -3,7 +3,7 @@ var docRef = database.collection("users");
 //track the loggin in username
 var loggedUser;
 var loggedIn = false;
-
+/*
 var highscore = parseInt(window.localStorage.getItem('HighScore'));
 // var highscore = 45;
 var databaseRef;
@@ -65,7 +65,7 @@ function compare(a,b) {
   if (a.highscore > b.highscore)
     return 1;
   return 0;
-}
+}*/
 
 function signUp(){
     //getting information given
@@ -548,7 +548,7 @@ Main.prototype = {
 		// console.log(databaseRef);
 		// console.log(playerId);
 		console.log("about to call");
-		setHighscore(parseInt(window.localStorage.getItem('HighScore')));
+		//setHighscore(parseInt(window.localStorage.getItem('HighScore')));
 	}
 
 };
