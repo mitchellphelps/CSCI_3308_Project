@@ -1,6 +1,6 @@
 var database = firebase.firestore();
 var docRef = database.collection("users");
-//track the loggin in username
+//track the logged in user
 var loggedUser;
 var loggedIn = false;
 
@@ -31,7 +31,7 @@ function setHighscore (highscore) {
       querySnapshot.forEach(function(doc){
           if(doc.data().username == loggedUser){
                   //set highscore
-                  return databaseRef.update({
+                  return doc.ref.update({
                       highscore: highscore
                   })
                   .then(function() {
@@ -118,7 +118,7 @@ function login(){
                     loggedUser = user;
                     loggedIn = true;
                     console.log(doc.data().username);
-                    databaseRef = database.collection("users").doc(docRef.id);
+                    databaseRef = database.collection("users").doc();
                     console.log(databaseRef);
                 }
             }
@@ -571,13 +571,14 @@ Main.prototype = {
 		// console.log(databaseRef);
 		// console.log(playerId);
 		console.log("about to call");
-    console.log(highscore);
-    console.log(loggedUser);
-    setHighscore(highscore);
+        console.log(highscore);
+        console.log(loggedUser);
+        setHighscore(highscore);
 
 	}
 
 };
+
 
 //preload.js
 var Preload = function(game){};

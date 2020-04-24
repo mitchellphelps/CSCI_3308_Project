@@ -193,3 +193,52 @@ input[type=submit] {
   margin-right: auto;
   width: 50%;
 }
+
+.stylingButtons{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+#playButton{
+    cursor:pointer;
+    font-size:3em;
+    background: url("../assets/crack-ground.jpg");
+    padding:4%;
+    color:white;
+    filter:brightness(.95);
+}
+
+#playButton:hover{
+    text-decoration:none;
+    color:white;
+    filter: drop-shadow(0 0 8mm rgb(0, 0, 0));
+}
+
+#scoreboardButton{
+    padding:2.5%;
+    border: 3px solid black;
+    font-size:2em;
+    padding-bottom: 0;
+}
+
+#scoreboardButton:hover{
+    text-decoration:none;
+    background:black;
+    color:white;
+    filter: drop-shadow(0 0 4mm rgb(0, 0, 0));
+}
+
+#howToButton{
+    padding:2.5%;
+    border: 3px solid black;
+    font-size:2em;
+    padding-bottom: 0;
+}
+
+#howToButton:hover{
+    text-decoration:none;
+    background:black;
+    color:white;
+    filter: drop-shadow(0 0 4mm rgb(0, 0, 0));
+}
