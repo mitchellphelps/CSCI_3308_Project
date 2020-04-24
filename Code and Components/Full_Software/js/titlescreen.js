@@ -1,44 +1,5 @@
-//TODO: API stuff for inserting new user and validating user's login
-//Also need log in just waiting for Node.js lab to have a better understanding of it
-//mostly password validation for sign up so far just from the lab we had
-/*
-function openLogModal(){
-
-}*/
-
 var database = firebase.firestore();
 var docRef = database.collection("users");
-
-
-//display usernames and highscores from highest to lowest
-// function show(){
-//     var nameShow = document.getElementById("nameShow");
-//     var scoreShow = document.getElementById("scoreShow");
-//
-//     database.collection("users").onSnapshot(function(querySnapshot){
-//         nameShow.innerHTML = "";
-//         scoreShow.innerHTML = "";
-//
-// 				var scoreArray = [];
-//         querySnapshot.forEach(function(doc){
-//             var name = doc.data().username;
-//             var highscore = doc.data().highscore;
-//
-// 						console.log(name);
-// 						console.log(highscore);
-// 						scoreArray.push(doc.data());
-//         });
-// 				scoreArray.sort(compare);
-// 				scoreArray.reverse();
-// 				console.log(scoreArray);
-//
-//
-// 				scoreArray.forEach((item, i) => {
-// 					scoreShow.innerHTML += scoreArray[i].username + " " + scoreArray[i].highscore + "<br>";
-// 				});
-//
-//     });
-// }
 
 $('#scoreboardModal').on('shown.bs.modal', function (e){
     console.log("Im here");
@@ -81,10 +42,10 @@ function compare(a,b) {
 
 function signUp(){
     //getting information given
-
 	var newUser = document.getElementById("username").value;
 	var newPassword = document.getElementById("psw").value;
-
+    console.log(newUser);
+    alert("Welcome to Runner, "+newUser+"!!!!");
 	//adding new document to collection with input values
 	database.collection("users").add({
 		username: newUser,
@@ -99,9 +60,28 @@ function signUp(){
 	});
 }
 
+function login(){
+    var user = document.getElementById("logUsername").value;
+    var psw = document.getElementById("logPsw").value;
+    database.collection("users").onSnapshot(function(querySnapshot){
+        querySnapshot.forEach(function(doc){
+            if(doc.data().username == user){
+                if(doc.data().password == psw){
+                    loggedUser = user;
+                    loggedIn = true;
+                    console.log(doc.data().username);
+                }
+            }
+        });
+        onLogIn();
+    });
+}
+
+
 function openSignModal() {
 
-    //var user = document.getElementById("username"); not needed yet
+    var username = document.getElementById("username");
+    var unique = document.getElementById("unique");
     var myInput = document.getElementById("psw");
     var confirmMyInput = document.getElementById("cpsw");
 	var letter = document.getElementById("letter");
@@ -109,10 +89,29 @@ function openSignModal() {
 	var number = document.getElementById("number");
 	var length = document.getElementById("length");
     var match = document.getElementById("match");
-
+    
+    username.onkeyup = function(){
+        var count = 0;
+        database.collection("users").onSnapshot(function(querySnapshot){
+            querySnapshot.forEach(function(doc){
+                if(doc.data().username == username.value){
+                    count++;
+                }
+            });
+            if(count>0){
+                unique.classList.remove("valid");
+                unique.classList.add("invalid");
+            }
+            else{
+                unique.classList.remove("invalid");
+                unique.classList.add("valid");
+            }
+        });
+    }
+    
+    
 	// When the user starts to type something inside the password field
-	myInput.onkeyup = function() {
-       console.log('java')
+	myInput.onkeyup = function(){
 
         var lowerCaseLetters = new RegExp("[a-z]");
         var upperCaseLetters = new RegExp("[A-Z]");
@@ -154,6 +153,7 @@ function openSignModal() {
             length.classList.remove("valid");
             length.classList.add("invalid");
         }
+        
     }
 
     confirmMyInput.onkeyup = function() {
@@ -175,12 +175,11 @@ function openSignModal() {
     }
 }
 
-
 function enableButton(letter, capital, number, length, match) {
 
     var button = document.getElementById('my_submit_button');
     var condition = (false);
-    if(letter.classList.contains("valid") && capital.classList.contains("valid") && number.classList.contains("valid") && length.classList.contains("valid") && match.classList.contains("valid")){
+    if(letter.classList.contains("valid") && capital.classList.contains("valid") && number.classList.contains("valid") && length.classList.contains("valid") && match.classList.contains("valid") && unique.classList.contains("valid")){
         condition = true;
     }
     if(condition) {
@@ -191,7 +190,19 @@ function enableButton(letter, capital, number, length, match) {
     }
 }
 
-
 function onClickFunction() {
     signUp();
+    document.getElementById("signModalShort").innerHTML = '<div class="modal-header"><h4 class="modal-title">Welcome to Runner, '+'</h4></div>';
+}
+
+function onLogIn(){
+    console.log(loggedIn);
+    if(loggedIn == true){
+        var newMessage = document.getElementById("logInModal");
+        newMessage.innerHTML = '<div class="modal-dialog modal-login"><div class="modal-content"><div class="modal-header"><h4 class="modal-title">Welcome to Runner, '+loggedUser+'</h4><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><br></div></div></div>';
+        document.getElementById("userNav").innerHTML = "";
+        document.getElementById("runnerTitle").innerHTML += '<h2>Welcome, ' +loggedUser+ '!</h2>';
+    }else{
+        document.getElementById("modalMessage").innerHTML = "<br>Please enter an existing username and password combination.";
+    }
 }
