@@ -3,28 +3,46 @@ var docRef = database.collection("users");
 //track the loggin in username
 var loggedUser;
 var loggedIn = false;
-/*
+
 var highscore = parseInt(window.localStorage.getItem('HighScore'));
 // var highscore = 45;
 var databaseRef;
-var playerId;
+// var playerId;
 // console.log(highscore);
 // console.log(playerId);
 // console.log(databaseRef);
 
 function setHighscore (highscore) {
-  console.log(databaseRef);
-  console.log(playerId);
-  
-  return databaseRef.update({
-      highscore: highscore
-  })
-  .then(function() {
-      console.log("Document successfully updated!");
-  })
-  .catch(function(error) {
-      // The document probably doesn't exist.
-      console.error("Error updating document: ", error);
+  // console.log(databaseRef);
+  // // console.log(playerId);
+  //
+  // return databaseRef.update({
+  //     highscore: highscore
+  // })
+  // .then(function() {
+  //     console.log("Document successfully updated!");
+  // })
+  // .catch(function(error) {
+  //     // The document probably doesn't exist.
+  //     console.error("Error updating document: ", error);
+  // });
+
+  database.collection("users").onSnapshot(function(querySnapshot){
+      querySnapshot.forEach(function(doc){
+          if(doc.data().username == loggedUser){
+                  //set highscore
+                  return databaseRef.update({
+                      highscore: highscore
+                  })
+                  .then(function() {
+                      console.log("Document successfully updated!");
+                  })
+                  .catch(function(error) {
+                      // The document probably doesn't exist.
+                      console.error("Error updating document: ", error);
+                  });
+          }
+      });
   });
 }
 
@@ -65,7 +83,7 @@ function compare(a,b) {
   if (a.highscore > b.highscore)
     return 1;
   return 0;
-}*/
+}
 
 function signUp(){
     //getting information given
@@ -75,12 +93,15 @@ function signUp(){
     alert("Welcome to Runner, "+newUser+"!!!!");
 	//adding new document to collection with input values
 	database.collection("users").add({
-		username: newUser,
+		    username: newUser,
         password: newPassword,
         highscore: 0
 	})
 	.then(function(docRef) {
 		console.log("Document written with ID: ", docRef.id);
+    databaseRef = database.collection("users").doc(docRef.id);
+    // console.log(database.collection("users").doc(docRef.id));
+
 	})
 	.catch(function(error) {
 		console.error("Error adding document: ", error);
@@ -97,6 +118,8 @@ function login(){
                     loggedUser = user;
                     loggedIn = true;
                     console.log(doc.data().username);
+                    databaseRef = database.collection("users").doc(docRef.id);
+                    console.log(databaseRef);
                 }
             }
         });
@@ -116,7 +139,7 @@ function openSignModal() {
 	var number = document.getElementById("number");
 	var length = document.getElementById("length");
     var match = document.getElementById("match");
-    
+
     username.onkeyup = function(){
         var count = 0;
         database.collection("users").onSnapshot(function(querySnapshot){
@@ -135,8 +158,8 @@ function openSignModal() {
             }
         });
     }
-    
-    
+
+
 	// When the user starts to type something inside the password field
 	myInput.onkeyup = function(){
 
@@ -180,7 +203,7 @@ function openSignModal() {
             length.classList.remove("valid");
             length.classList.add("invalid");
         }
-        
+
     }
 
     confirmMyInput.onkeyup = function() {
@@ -219,7 +242,7 @@ function enableButton(letter, capital, number, length, match) {
 
 function onClickFunction() {
     signUp();
-    document.getElementById("signModalShort").innerHTML = '<div class="modal-header"><h4 class="modal-title">Welcome to Runner, '+'</h4></div>';
+    // document.getElementById("signModalShort").innerHTML = '<div class="modal-header"><h4 class="modal-title">Welcome to Runner, '+'</h4></div>';
 }
 
 function onLogIn(){
@@ -241,13 +264,13 @@ function onLogIn(){
 var Boot = function(game){
 
 };
-  
+
 Boot.prototype = {
 
 	preload: function(){
 
 	},
-	
+
   	create: function(){
 		this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 		this.game.state.start("Preload");
@@ -548,7 +571,10 @@ Main.prototype = {
 		// console.log(databaseRef);
 		// console.log(playerId);
 		console.log("about to call");
-		//setHighscore(parseInt(window.localStorage.getItem('HighScore')));
+    console.log(highscore);
+    console.log(loggedUser);
+    setHighscore(highscore);
+
 	}
 
 };
@@ -558,12 +584,12 @@ var Preload = function(game){};
 
 Preload.prototype = {
 
-	preload: function(){ 
+	preload: function(){
 		this.game.load.image('tile', 'assets/tile.png');
 		this.game.load.image('box', 'assets/box.png');
-		
+
 		this.game.load.spritesheet('player', 'assets/player.png', 24, 24, 9, -2);
-		
+
 
 	},
 
