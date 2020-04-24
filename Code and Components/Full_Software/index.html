@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/phaser.min.js"></script>
 
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="css/titlescreen.css" media="screen" />
@@ -19,7 +20,7 @@
 
   </head>
 
-  <body>
+  <body id="page">
 
     <!-- Scoreboard pop up -->
       <div id="scoreboardModal" class="modal fade">
@@ -66,7 +67,7 @@
 
     <!-- Button to Start Playing the Game -->
 	<div class='text-center'>
-        <a href="Runner/RunnerFiles/index.html" type="button" class="btn btn-custom1 btn-lg">Play Runner</a>
+        <a href="runnerGame" type="button" id="playButton" class="btn btn-custom2 btn-lg" data-toggle=modal onClick="startGame()">Play Runner</a>
     </div>
 
     <!-- Button to See Scoreboards -->
