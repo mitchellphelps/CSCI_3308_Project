@@ -95,7 +95,8 @@ function signUp(){
 	database.collection("users").add({
 		    username: newUser,
         password: newPassword,
-        highscore: 0
+        highscore: 0,
+        coronahighscore:0
 	})
 	.then(function(docRef) {
 		console.log("Document written with ID: ", docRef.id);
