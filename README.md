@@ -1,4 +1,4 @@
-## CSCI_3308_Project - Runner
+# CSCI_3308_Project - Runner
 
 Team Number: 111-3
 
@@ -13,7 +13,7 @@ Group Members:
   - Alexa Rinard
   - Beau Walters
  
- # Repository Structure
+ ## Repository Structure
  <pre>
   ├── Code and Components/runner                   # All code files  
   |   ├── assets                              # resources for game animations  
@@ -33,7 +33,7 @@ Group Members:
   ├── Milestone Submissions                   # Documentation files (alternatively `doc`)  
   └── README.md
  </pre>
- # Runner
+ ## Runner
 
 To Compile:
 
@@ -68,7 +68,7 @@ To Compile:
     7) Navigate through the folders to Full_Software.
     8) Now you can use the software!
 
-# Tested Browsers:
+## Tested Browsers:
 
   - Safari [WORKING]
   - Firefox [WORKING]
