@@ -14,25 +14,25 @@ Group Members:
   - Beau Walters
  
  # Repository Structure
- 
-  ├── Code and Components/runner                   # All code files
-  |   ├── assets                              # resources for game animations
-  |   |   ├── box.png
-  |   |   ├── coronaBox.png
-  |   |   ├── coronaPlayer.png
-  |   |   ├── crack-ground.jpg
-  |   |   ├── player.png
-  |   |   ├── scoreboard.png
-  |   |   └── tile.png
-  |   ├── css                                 # all css files
-  |   |   └── titlescreen.css
-  |   ├── js                                  # all javascript files
-  |   |   ├── phaser.min.js
-  |   |   └── titlescreen.js
-  |   └── index.html                          # home page for the application
-  ├── Milestone Submissions                   # Documentation files (alternatively `doc`)
+ <pre>
+  ├── Code and Components/runner                   # All code files  
+  |   ├── assets                              # resources for game animations  
+  |   |   ├── box.png  
+  |   |   ├── coronaBox.png  
+  |   |   ├── coronaPlayer.png  
+  |   |   ├── crack-ground.jpg  
+  |   |   ├── player.png  
+  |   |   ├── scoreboard.png  
+  |   |   └── tile.png  
+  |   ├── css                                 # all css files  
+  |   |   └── titlescreen.css  
+  |   ├── js                                  # all javascript files  
+  |   |   ├── phaser.min.js  
+  |   |   └── titlescreen.js  
+  |   └── index.html                          # home page for the application  
+  ├── Milestone Submissions                   # Documentation files (alternatively `doc`)  
   └── README.md
- 
+ </pre>
  # Runner
 
 To Compile:
